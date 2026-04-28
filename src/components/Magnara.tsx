@@ -58,10 +58,12 @@ export function Magnara() {
 
           <div className="mt-12 flex gap-4 items-center">
             <a
-              href="#subscribe"
+              href="https://magnara.base44.app"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-7 py-3 bg-gradient-gold text-primary-foreground rounded-sm shadow-gold"
             >
-              <span className="smallcaps text-sm">Start Free</span>
+              <span className="smallcaps text-sm">Start Free ↗</span>
             </a>
             <a href="#essays" className="smallcaps text-xs text-muted-foreground hover:text-gold">
               See how it works
