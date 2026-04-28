@@ -16,6 +16,14 @@ export function Footer() {
         <div className="flex gap-6 text-xs smallcaps text-muted-foreground">
           <a href="#pillars" className="hover:text-gold">Pillars</a>
           <a href="#magnara" className="hover:text-gold">Magnara</a>
+          <a
+            href="https://bio.site/TheMagnaAnimaGeniusProject"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gold"
+          >
+            All Links ↗
+          </a>
           <a href="#subscribe" className="hover:text-gold">Subscribe</a>
         </div>
       </div>
