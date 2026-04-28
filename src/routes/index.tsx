@@ -39,6 +39,7 @@ function Index() {
       <Magnara />
       <Manifesto />
       <Subscribe />
+      <Support />
       <Footer />
     </main>
   );
