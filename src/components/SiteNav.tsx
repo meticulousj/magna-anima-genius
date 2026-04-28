@@ -28,12 +28,22 @@ export function SiteNav() {
             </a>
           ))}
         </div>
-        <a
-          href="#subscribe"
-          className="smallcaps text-xs px-4 py-2 border border-gold/40 text-gold rounded-sm hover:bg-gold hover:text-primary-foreground transition-colors"
-        >
-          Subscribe
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://bio.site/TheMagnaAnimaGeniusProject"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-block smallcaps text-xs px-4 py-2 text-muted-foreground hover:text-gold transition-colors"
+          >
+            All Links ↗
+          </a>
+          <a
+            href="#subscribe"
+            className="smallcaps text-xs px-4 py-2 border border-gold/40 text-gold rounded-sm hover:bg-gold hover:text-primary-foreground transition-colors"
+          >
+            Subscribe
+          </a>
+        </div>
       </nav>
     </header>
   );
