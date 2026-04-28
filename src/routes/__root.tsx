@@ -29,14 +29,21 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "🌍 The Magna Anima Genius Project" },
+      { name: "description", content: "Awaken the Noble Spirit Within
+The Magna Anima Genius Project is a global initiative committed to nurturing the brilliance within every individual." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "🌍 The Magna Anima Genius Project" },
+      { property: "og:description", content: "Awaken the Noble Spirit Within
+The Magna Anima Genius Project is a global initiative committed to nurturing the brilliance within every individual." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "🌍 The Magna Anima Genius Project" },
+      { name: "twitter:description", content: "Awaken the Noble Spirit Within
+The Magna Anima Genius Project is a global initiative committed to nurturing the brilliance within every individual." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/2261541d-dc5f-4549-9411-8622044f8e01" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/2261541d-dc5f-4549-9411-8622044f8e01" },
     ],
     links: [
       {
