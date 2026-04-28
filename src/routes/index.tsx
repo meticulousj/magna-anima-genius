@@ -1,26 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteNav } from "@/components/SiteNav";
+import { Hero } from "@/components/Hero";
+import { Pillars } from "@/components/Pillars";
+import { Essays } from "@/components/Essays";
+import { Magnara } from "@/components/Magnara";
+import { Manifesto } from "@/components/Manifesto";
+import { Subscribe } from "@/components/Subscribe";
+import { Footer } from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "The Magna Anima Genius Project — You were never meant to be ordinary" },
+      {
+        name: "description",
+        content:
+          "A global initiative nurturing the brilliance within every individual. Essays, rituals, and tools built on four pillars: Intellect, Heart, Empowerment, Purpose.",
+      },
+      { property: "og:title", content: "The Magna Anima Genius Project" },
+      {
+        property: "og:description",
+        content:
+          "Raise your ceiling. Essays, rituals, and the Magnara OS for a proven life.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="min-h-screen">
+      <SiteNav />
+      <Hero />
+      <Pillars />
+      <Essays />
+      <Magnara />
+      <Manifesto />
+      <Subscribe />
+      <Footer />
+    </main>
+  );
 }
