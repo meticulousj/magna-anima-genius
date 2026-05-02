@@ -40,6 +40,16 @@ export function Sprint() {
           <div className="mt-12 flex gap-4 items-center flex-wrap">
             <a
               href="#subscribe"
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent("subscribe:intent", { detail: { source: "sprint" } }));
+                const el = document.getElementById("subscribe");
+                el?.scrollIntoView({ behavior: "smooth", block: "start" });
+                setTimeout(() => {
+                  const input = el?.querySelector<HTMLInputElement>('input[type="email"]');
+                  input?.focus({ preventScroll: true });
+                }, 600);
+              }}
               className="inline-flex items-center px-7 py-3 bg-gradient-gold text-primary-foreground rounded-sm shadow-gold"
             >
               <span className="smallcaps text-sm">Get the Sprint</span>

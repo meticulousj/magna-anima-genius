@@ -1,9 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Starfield } from "./Starfield";
 
 export function Subscribe() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [intent, setIntent] = useState<"default" | "sprint">("default");
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<{ source?: string }>).detail;
+      if (detail?.source === "sprint") setIntent("sprint");
+    };
+    window.addEventListener("subscribe:intent", handler as EventListener);
+    return () => window.removeEventListener("subscribe:intent", handler as EventListener);
+  }, []);
+
+  const isSprint = intent === "sprint";
 
   return (
     <section id="subscribe" className="relative py-28 md:py-36 overflow-hidden border-y border-border/60">
@@ -13,18 +25,29 @@ export function Subscribe() {
         style={{ background: "radial-gradient(ellipse at center, oklch(0.22 0.06 265) 0%, oklch(0.14 0.035 260) 70%)" }}
       />
       <div className="mx-auto max-w-2xl px-6 lg:px-10 text-center">
-        <p className="smallcaps text-xs text-gold">Join the inner circle</p>
+        <p className="smallcaps text-xs text-gold">
+          {isSprint ? "Reserve your Sprint seat" : "Join the inner circle"}
+        </p>
         <h2 className="mt-4 font-display text-4xl md:text-6xl leading-tight">
-          Raise your <em className="text-gradient-gold italic">ceiling</em>.
+          {isSprint ? (
+            <>
+              Begin the <em className="text-gradient-gold italic">Sprint</em>.
+            </>
+          ) : (
+            <>
+              Raise your <em className="text-gradient-gold italic">ceiling</em>.
+            </>
+          )}
         </h2>
         <p className="mt-6 text-muted-foreground max-w-lg mx-auto">
-          One dispatch a week. Essays, rituals, and tools for the sovereign life.
-          No noise. No filler. Unsubscribe anytime.
+          {isSprint
+            ? "Drop your email — you'll get the 90-Day Sovereign Sprint workbook (PDF + Notion) the moment v1 ships, plus the weekly dispatch."
+            : "One dispatch a week. Essays, rituals, and tools for the sovereign life. No noise. No filler. Unsubscribe anytime."}
         </p>
 
         {sent ? (
           <div className="mt-12 font-display text-2xl text-gold italic animate-rise">
-            The flame is lit. Welcome.
+            {isSprint ? "Your seat is held. The Sprint begins soon." : "The flame is lit. Welcome."}
           </div>
         ) : (
           <form
@@ -46,7 +69,7 @@ export function Subscribe() {
               type="submit"
               className="bg-gradient-gold text-primary-foreground px-7 py-3.5 rounded-sm shadow-gold smallcaps text-sm"
             >
-              Subscribe
+              {isSprint ? "Reserve Seat" : "Subscribe"}
             </button>
           </form>
         )}
