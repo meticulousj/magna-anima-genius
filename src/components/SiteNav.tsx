@@ -2,6 +2,7 @@ import { FlameMark } from "./FlameMark";
 
 const links = [
   { href: "#pillars", label: "Pillars" },
+  { href: "#values", label: "Values" },
   { href: "#essays", label: "Dispatches" },
   { href: "#magnara", label: "Magnara" },
   { href: "#manifesto", label: "Manifesto" },
