@@ -1,36 +1,34 @@
-## Add Core Values Section
+## Add 90-Day Sovereign Sprint Section
 
-Create a new section displaying the seven Core Values of The Magna Anima Genius Project, placed between the Pillars and Essays sections, styled to match the site's midnight navy + antique gold aesthetic.
+A new product section pitching the **90-Day Sovereign Sprint** — a printable / Notion workbook with daily prompts, rituals, and a weekly reflection cadence. Styled to match the site's midnight + antique gold aesthetic and structured like `Magnara.tsx` (the closest existing "product" section).
 
 ### Files
 
-**Create `src/components/Values.tsx`**
-- Section with `id="values"`, matching the typography rhythm of `Pillars.tsx` and `Manifesto.tsx`.
-- Eyebrow: smallcaps gold "Core Values".
-- Heading: display serif — "What we stand on." with a gold-gradient italic accent.
-- Gold rule divider (matching other sections).
-- Grid of 7 value cards (responsive: 1 / 2 / 3 / 4 columns) with:
-  - Roman numeral or gold dot marker
-  - Value name in display serif
-  - One-line essence/tagline beneath each
-- Subtle hover: gold underline sweep (mirroring `Pillars.tsx`).
-
-Values + taglines (concise, on-brand):
-1. Empowerment — Authority sourced from within.
-2. Compassion — Strength tempered by tenderness.
-3. Purpose-Driven Action — Aim before motion.
-4. Holistic Brilliance — Mind, heart, body, spirit — one signal.
-5. Integrity — Aligned in private and public.
-6. Innovation — Ancient wisdom, modern instruments.
-7. Global Unity — One soul, many tongues.
+**Create `src/components/Sprint.tsx`**
+- Section `id="sprint"`, two-column layout on desktop (mirrors `Magnara`).
+- **Left column** — content:
+  - Eyebrow: smallcaps gold "Workbook · 90 Days"
+  - Heading: display serif — *"The 90-Day"* (gold-gradient italic) + *"Sovereign Sprint."*
+  - Lede paragraph (~2 lines): one focused arc, three protocols a day, one honest reflection a week.
+  - Feature list (gold dash markers, hover sweep — same pattern as `Magnara`):
+    - **Daily Prompts** — one question to crack the day open.
+    - **Three Rituals** — morning ignition, midday recalibration, evening audit.
+    - **Weekly Reflection** — five questions, fifteen minutes, zero theatre.
+    - **30/60/90 Milestones** — proof you moved, not just tried.
+    - **Two Formats** — print-ready PDF + Notion template (Obsidian variant included).
+  - CTA row: primary gold button "Get the Sprint" → `#subscribe`; secondary smallcaps "See a sample page" → `#essays`.
+- **Right column** — visual card:
+  - Stacked "page mockups" using pure CSS: two layered cards (rotated slightly, gold border, shadow-gold, grain overlay) showing a faux page header ("Day 01 · Ignition"), three ritual lines, and a reflection block.
+  - Soft gold blur halo behind (matches `Magnara` glow).
+  - Corner badge: smallcaps "v1 · Beta drop".
 
 **Edit `src/routes/index.tsx`**
-- Import `Values` and place `<Values />` after `<Pillars />` and before `<Essays />`.
+- Import `Sprint` and place `<Sprint />` between `<Magnara />` and `<Manifesto />` (product flows together: app → workbook → manifesto).
 
 **Edit `src/components/SiteNav.tsx`**
-- Add `{ href: "#values", label: "Values" }` between Pillars and Dispatches.
+- Add `{ href: "#sprint", label: "Sprint" }` between Magnara and Manifesto.
 
 ### Notes
-- No new dependencies.
-- Pure presentational; no data/server work.
-- Anchor scroll already enabled via `html { scroll-behavior: smooth }`.
+- Pure presentational — no new dependencies, no data, no checkout wiring (CTA points at `#subscribe` so the existing email capture handles interest).
+- Reuses existing utilities: `text-gradient-gold`, `shadow-gold`, `gold-rule`, `smallcaps`, `grain`, `animate-float-slow`.
+- Mockup is built from divs/typography only — no new images required.

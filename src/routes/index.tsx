@@ -5,6 +5,7 @@ import { Pillars } from "@/components/Pillars";
 import { Values } from "@/components/Values";
 import { Essays } from "@/components/Essays";
 import { Magnara } from "@/components/Magnara";
+import { Sprint } from "@/components/Sprint";
 import { Manifesto } from "@/components/Manifesto";
 import { Subscribe } from "@/components/Subscribe";
 import { Support } from "@/components/Support";
@@ -39,6 +40,7 @@ function Index() {
       <Values />
       <Essays />
       <Magnara />
+      <Sprint />
       <Manifesto />
       <Subscribe />
       <Support />
