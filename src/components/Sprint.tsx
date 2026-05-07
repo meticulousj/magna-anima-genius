@@ -3,7 +3,7 @@ const features = [
   { k: "Three Rituals", d: "Morning ignition, midday recalibration, evening audit." },
   { k: "Weekly Reflection", d: "Five questions, fifteen minutes, zero theatre." },
   { k: "30/60/90 Milestones", d: "Proof you moved, not just tried." },
-  { k: "Two Formats", d: "Print-ready PDF + Notion template (Obsidian variant included)." },
+  { k: "Three Formats", d: "Print-ready PDF, Notion import, and a full Obsidian vault." },
 ];
 
 export function Sprint() {
@@ -47,8 +47,19 @@ export function Sprint() {
             >
               <span className="smallcaps text-sm">Get the Sprint · PDF</span>
             </a>
-            <a href="#essays" className="smallcaps text-xs text-muted-foreground hover:text-gold">
-              See a sample page →
+            <a
+              href="/sovereign-sprint-notion.zip"
+              download
+              className="inline-flex items-center px-5 py-3 border border-gold/50 text-foreground/90 hover:border-gold hover:text-gold rounded-sm transition-colors"
+            >
+              <span className="smallcaps text-xs">Notion template</span>
+            </a>
+            <a
+              href="/sovereign-sprint-obsidian.zip"
+              download
+              className="inline-flex items-center px-5 py-3 border border-gold/50 text-foreground/90 hover:border-gold hover:text-gold rounded-sm transition-colors"
+            >
+              <span className="smallcaps text-xs">Obsidian vault</span>
             </a>
           </div>
           <div className="mt-4">
