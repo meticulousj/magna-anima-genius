@@ -39,6 +39,20 @@ export function Sprint() {
 
           <div className="mt-12 flex gap-4 items-center flex-wrap">
             <a
+              href="/sovereign-sprint-workbook.pdf"
+              download
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center px-7 py-3 bg-gradient-gold text-primary-foreground rounded-sm shadow-gold"
+            >
+              <span className="smallcaps text-sm">Get the Sprint · PDF</span>
+            </a>
+            <a href="#essays" className="smallcaps text-xs text-muted-foreground hover:text-gold">
+              See a sample page →
+            </a>
+          </div>
+          <div className="mt-4">
+            <a
               href="#subscribe"
               onClick={(e) => {
                 e.preventDefault();
@@ -50,12 +64,9 @@ export function Sprint() {
                   input?.focus({ preventScroll: true });
                 }, 600);
               }}
-              className="inline-flex items-center px-7 py-3 bg-gradient-gold text-primary-foreground rounded-sm shadow-gold"
+              className="smallcaps text-xs text-muted-foreground hover:text-gold"
             >
-              <span className="smallcaps text-sm">Get the Sprint</span>
-            </a>
-            <a href="#essays" className="smallcaps text-xs text-muted-foreground hover:text-gold">
-              See a sample page →
+              Get updates when v2 ships →
             </a>
           </div>
         </div>
