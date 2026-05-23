@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const features = [
   { k: "Daily Prompts", d: "One question to crack the day open." },
   { k: "Three Rituals", d: "Morning ignition, midday recalibration, evening audit." },
@@ -6,7 +8,28 @@ const features = [
   { k: "Three Formats", d: "Print-ready PDF, Notion import, and a full Obsidian vault." },
 ];
 
+// Add new versions here as they ship. File naming convention:
+//   v1 → /sovereign-sprint-workbook.pdf, /sovereign-sprint-notion.zip, /sovereign-sprint-obsidian.zip
+//   v2+ → /sovereign-sprint-workbook-v2.pdf, /sovereign-sprint-notion-v2.zip, /sovereign-sprint-obsidian-v2.zip
+const VERSIONS = [
+  { id: "v1", label: "v1 · Beta", available: true },
+  { id: "v2", label: "v2 · Soon", available: false },
+] as const;
+
+type VersionId = (typeof VERSIONS)[number]["id"];
+
+function fileFor(version: VersionId, kind: "pdf" | "notion" | "obsidian") {
+  const suffix = version === "v1" ? "" : `-${version}`;
+  if (kind === "pdf") return `/sovereign-sprint-workbook${suffix}.pdf`;
+  if (kind === "notion") return `/sovereign-sprint-notion${suffix}.zip`;
+  return `/sovereign-sprint-obsidian${suffix}.zip`;
+}
+
 export function Sprint() {
+  const [version, setVersion] = useState<VersionId>("v1");
+  const active = VERSIONS.find((v) => v.id === version)!;
+  const disabled = !active.available;
+
   return (
     <section id="sprint" className="relative py-28 md:py-40 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
@@ -37,27 +60,67 @@ export function Sprint() {
             ))}
           </ul>
 
-          <div className="mt-12 flex gap-4 items-center flex-wrap">
+          {/* Version selector */}
+          <div
+            className="mt-12 inline-flex items-center gap-1 p-1 border border-gold/30 rounded-sm"
+            role="tablist"
+            aria-label="Sprint version"
+          >
+            {VERSIONS.map((v) => {
+              const isActive = v.id === version;
+              return (
+                <button
+                  key={v.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setVersion(v.id)}
+                  className={`smallcaps text-[11px] px-3 py-1.5 rounded-sm transition-colors ${
+                    isActive
+                      ? "bg-gold/15 text-gold"
+                      : "text-muted-foreground hover:text-gold"
+                  }`}
+                >
+                  {v.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 flex gap-4 items-center flex-wrap">
             <a
-              href="/sovereign-sprint-workbook.pdf"
-              download
-              target="_blank"
+              href={disabled ? undefined : fileFor(version, "pdf")}
+              download={!disabled}
+              target={disabled ? undefined : "_blank"}
               rel="noopener"
-              className="inline-flex items-center px-7 py-3 bg-gradient-gold text-primary-foreground rounded-sm shadow-gold"
+              aria-disabled={disabled}
+              onClick={(e) => disabled && e.preventDefault()}
+              className={`inline-flex items-center px-7 py-3 bg-gradient-gold text-primary-foreground rounded-sm shadow-gold ${
+                disabled ? "opacity-40 cursor-not-allowed" : ""
+              }`}
             >
-              <span className="smallcaps text-sm">Get the Sprint · PDF</span>
+              <span className="smallcaps text-sm">
+                Get the Sprint · PDF {version.toUpperCase()}
+              </span>
             </a>
             <a
-              href="/sovereign-sprint-notion.zip"
-              download
-              className="inline-flex items-center px-5 py-3 border border-gold/50 text-foreground/90 hover:border-gold hover:text-gold rounded-sm transition-colors"
+              href={disabled ? undefined : fileFor(version, "notion")}
+              download={!disabled}
+              aria-disabled={disabled}
+              onClick={(e) => disabled && e.preventDefault()}
+              className={`inline-flex items-center px-5 py-3 border border-gold/50 text-foreground/90 hover:border-gold hover:text-gold rounded-sm transition-colors ${
+                disabled ? "opacity-40 cursor-not-allowed hover:border-gold/50 hover:text-foreground/90" : ""
+              }`}
             >
               <span className="smallcaps text-xs">Notion template</span>
             </a>
             <a
-              href="/sovereign-sprint-obsidian.zip"
-              download
-              className="inline-flex items-center px-5 py-3 border border-gold/50 text-foreground/90 hover:border-gold hover:text-gold rounded-sm transition-colors"
+              href={disabled ? undefined : fileFor(version, "obsidian")}
+              download={!disabled}
+              aria-disabled={disabled}
+              onClick={(e) => disabled && e.preventDefault()}
+              className={`inline-flex items-center px-5 py-3 border border-gold/50 text-foreground/90 hover:border-gold hover:text-gold rounded-sm transition-colors ${
+                disabled ? "opacity-40 cursor-not-allowed hover:border-gold/50 hover:text-foreground/90" : ""
+              }`}
             >
               <span className="smallcaps text-xs">Obsidian vault</span>
             </a>
@@ -77,7 +140,7 @@ export function Sprint() {
               }}
               className="smallcaps text-xs text-muted-foreground hover:text-gold"
             >
-              Get updates when v2 ships →
+              {disabled ? "Get notified when this version ships →" : "Get updates when v2 ships →"}
             </a>
           </div>
         </div>
@@ -129,7 +192,7 @@ export function Sprint() {
           </div>
 
           <div className="absolute -bottom-2 -right-2 bg-background border border-gold/40 px-5 py-3 rounded-sm">
-            <p className="smallcaps text-[10px] text-gold">v1 · Beta drop</p>
+            <p className="smallcaps text-[10px] text-gold">{active.label} drop</p>
           </div>
         </div>
       </div>
