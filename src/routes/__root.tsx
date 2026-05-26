@@ -24,28 +24,45 @@ function NotFoundComponent() {
   );
 }
 
+const SITE_URL = "https://magna-anima-genius.lovable.app";
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "🌍 The Magna Anima Genius Project" },
-      { name: "description", content: "Awaken the Noble Spirit Within. The Magna Anima Genius Project is a global initiative committed to nurturing the brilliance within every individual." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "🌍 The Magna Anima Genius Project" },
-      { property: "og:description", content: "Awaken the Noble Spirit Within. The Magna Anima Genius Project is a global initiative committed to nurturing the brilliance within every individual." },
+      { name: "author", content: "The Magna Anima Genius Project" },
+      { name: "theme-color", content: "#0a0a0a" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "🌍 The Magna Anima Genius Project" },
-      { name: "twitter:description", content: "Awaken the Noble Spirit Within. The Magna Anima Genius Project is a global initiative committed to nurturing the brilliance within every individual." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/2261541d-dc5f-4549-9411-8622044f8e01" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/2261541d-dc5f-4549-9411-8622044f8e01" },
+      { property: "og:site_name", content: "The Magna Anima Genius Project" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+    ],
+    scripts: [
       {
-        rel: "stylesheet",
-        href: appCss,
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "The Magna Anima Genius Project",
+          alternateName: "Magna Anima",
+          url: SITE_URL,
+          logo: `${SITE_URL}/og-image.jpg`,
+          description:
+            "A global initiative nurturing the brilliance within every individual through essays, rituals, and the 90-Day Sovereign Sprint.",
+          sameAs: ["https://bio.site/TheMagnaAnimaGeniusProject"],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "The Magna Anima Genius Project",
+          url: SITE_URL,
+        }),
       },
     ],
   }),
