@@ -42,6 +42,7 @@ function Index() {
       <Essays />
       <Magnara />
       <Sprint />
+      <Store />
       <Manifesto />
       <Subscribe />
       <Support />
