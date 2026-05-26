@@ -6,6 +6,7 @@ const links = [
   { href: "#essays", label: "Dispatches" },
   { href: "#magnara", label: "Magnara" },
   { href: "#sprint", label: "Sprint" },
+  { href: "#store", label: "Store" },
   { href: "#manifesto", label: "Manifesto" },
 ];
 
