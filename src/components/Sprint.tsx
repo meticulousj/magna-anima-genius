@@ -140,7 +140,7 @@ export function Sprint() {
               }}
               className="smallcaps text-xs text-muted-foreground hover:text-gold"
             >
-              {disabled ? "Get notified when this version ships →" : "Get updates when v2 ships →"}
+              {disabled ? "Get notified when this version ships →" : "Get notified of new drops →"}
             </a>
           </div>
         </div>
