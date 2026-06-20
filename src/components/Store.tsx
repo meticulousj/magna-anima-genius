@@ -1,11 +1,35 @@
-const items = [
+import { useState } from "react";
+import sprintCover from "@/assets/sprint-v2-cover.jpg";
+import sprintP2 from "@/assets/sprint-v2-p2.jpg";
+import sprintP3 from "@/assets/sprint-v2-p3.jpg";
+import sprintP4 from "@/assets/sprint-v2-p4.jpg";
+
+type Item = {
+  title: string;
+  format: string;
+  desc: string;
+  href: string;
+  price: string;
+  tag?: string;
+  thumbs: { src: string; alt: string }[];
+  thumbTone: "pages" | "notion" | "obsidian";
+};
+
+const items: Item[] = [
   {
     title: "The 90-Day Sovereign Sprint",
-    format: "PDF Workbook",
+    format: "PDF Workbook · v2",
     desc: "109 pages. Daily prompts, three rituals, weekly reflections, 30·60·90 gates.",
-    href: "/sovereign-sprint-workbook.pdf",
-    price: "Free · Beta",
+    href: "/sovereign-sprint-workbook-v2.pdf",
+    price: "Free · v2",
     tag: "Most popular",
+    thumbs: [
+      { src: sprintCover, alt: "Sovereign Sprint v2 cover page" },
+      { src: sprintP2, alt: "Sovereign Sprint v2 page 2 preview" },
+      { src: sprintP3, alt: "Sovereign Sprint v2 page 3 preview" },
+      { src: sprintP4, alt: "Sovereign Sprint v2 page 4 preview" },
+    ],
+    thumbTone: "pages",
   },
   {
     title: "Sovereign Sprint — Notion Template",
@@ -13,6 +37,8 @@ const items = [
     desc: "96 Markdown files. Drop into Notion → Import → Markdown & CSV.",
     href: "/sovereign-sprint-notion.zip",
     price: "Free · Beta",
+    thumbs: [],
+    thumbTone: "notion",
   },
   {
     title: "Sovereign Sprint — Obsidian Vault",
@@ -20,8 +46,64 @@ const items = [
     desc: "112-file vault with daily/weekly templates and pre-configured settings.",
     href: "/sovereign-sprint-obsidian.zip",
     price: "Free · Beta",
+    thumbs: [],
+    thumbTone: "obsidian",
   },
 ];
+
+function PdfPreview({ thumbs }: { thumbs: Item["thumbs"] }) {
+  const [active, setActive] = useState(0);
+  return (
+    <div className="-mx-1">
+      <div className="relative aspect-[8.5/11] overflow-hidden rounded-sm border border-gold/30 bg-background shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)]">
+        <img
+          src={thumbs[active].src}
+          alt={thumbs[active].alt}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover object-top"
+        />
+        <span className="absolute bottom-2 right-2 smallcaps text-[9px] px-1.5 py-0.5 bg-background/80 text-gold/90 border border-gold/30 rounded-sm">
+          Pg {active + 1}/{thumbs.length}
+        </span>
+      </div>
+      <div className="mt-2 grid grid-cols-4 gap-1.5">
+        {thumbs.map((t, i) => (
+          <button
+            key={t.src}
+            type="button"
+            onClick={() => setActive(i)}
+            onMouseEnter={() => setActive(i)}
+            aria-label={`Preview ${t.alt}`}
+            aria-pressed={active === i}
+            className={`relative aspect-[8.5/11] overflow-hidden rounded-[2px] border transition-colors ${
+              active === i ? "border-gold" : "border-gold/20 hover:border-gold/60"
+            }`}
+          >
+            <img src={t.src} alt="" className="absolute inset-0 h-full w-full object-cover object-top" />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function GlyphPreview({ tone }: { tone: "notion" | "obsidian" }) {
+  const label = tone === "notion" ? "Notion · Markdown" : "Obsidian · Vault";
+  const glyph = tone === "notion" ? "N" : "O";
+  return (
+    <div className="relative aspect-[8.5/11] overflow-hidden rounded-sm border border-gold/25 bg-gradient-to-br from-background to-card grain">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+        <span className="font-display text-7xl text-gradient-gold italic">{glyph}</span>
+        <span className="smallcaps text-[10px] text-gold/80">{label}</span>
+      </div>
+      <div className="absolute inset-x-6 bottom-6 space-y-1.5 opacity-50">
+        {[90, 75, 82, 60, 70].map((w, i) => (
+          <div key={i} className="h-[3px] bg-gold/40 rounded-full" style={{ width: `${w}%` }} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function Store() {
   return (
@@ -46,10 +128,19 @@ export function Store() {
               className="group relative grain border border-gold/25 bg-card rounded-sm p-7 flex flex-col hover:border-gold/60 transition-colors"
             >
               {it.tag && (
-                <span className="absolute top-4 right-4 smallcaps text-[10px] px-2 py-1 bg-gold/15 text-gold rounded-sm">
+                <span className="absolute top-4 right-4 z-10 smallcaps text-[10px] px-2 py-1 bg-gold/15 text-gold rounded-sm">
                   {it.tag}
                 </span>
               )}
+
+              <div className="mb-5">
+                {it.thumbs.length > 0 ? (
+                  <PdfPreview thumbs={it.thumbs} />
+                ) : (
+                  <GlyphPreview tone={it.thumbTone as "notion" | "obsidian"} />
+                )}
+              </div>
+
               <p className="smallcaps text-[10px] text-gold/80">{it.format}</p>
               <h3 className="mt-3 font-display text-2xl leading-snug">
                 {it.title}
