@@ -13,7 +13,7 @@ const features = [
 //   v2+ → /sovereign-sprint-workbook-v2.pdf, /sovereign-sprint-notion-v2.zip, /sovereign-sprint-obsidian-v2.zip
 const VERSIONS = [
   { id: "v1", label: "v1 · Beta", available: true },
-  { id: "v2", label: "v2 · Soon", available: false },
+  { id: "v2", label: "v2 · Current", available: true },
 ] as const;
 
 type VersionId = (typeof VERSIONS)[number]["id"];
@@ -26,7 +26,7 @@ function fileFor(version: VersionId, kind: "pdf" | "notion" | "obsidian") {
 }
 
 export function Sprint() {
-  const [version, setVersion] = useState<VersionId>("v1");
+  const [version, setVersion] = useState<VersionId>("v2");
   const active = VERSIONS.find((v) => v.id === version)!;
   const disabled = !active.available;
 
@@ -140,7 +140,7 @@ export function Sprint() {
               }}
               className="smallcaps text-xs text-muted-foreground hover:text-gold"
             >
-              {disabled ? "Get notified when this version ships →" : "Get updates when v2 ships →"}
+              {disabled ? "Get notified when this version ships →" : "Get notified of new drops →"}
             </a>
           </div>
         </div>
