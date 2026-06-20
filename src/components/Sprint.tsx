@@ -13,7 +13,7 @@ const features = [
 //   v2+ → /sovereign-sprint-workbook-v2.pdf, /sovereign-sprint-notion-v2.zip, /sovereign-sprint-obsidian-v2.zip
 const VERSIONS = [
   { id: "v1", label: "v1 · Beta", available: true },
-  { id: "v2", label: "v2 · Soon", available: false },
+  { id: "v2", label: "v2 · Current", available: true },
 ] as const;
 
 type VersionId = (typeof VERSIONS)[number]["id"];
