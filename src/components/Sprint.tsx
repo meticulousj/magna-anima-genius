@@ -26,7 +26,7 @@ function fileFor(version: VersionId, kind: "pdf" | "notion" | "obsidian") {
 }
 
 export function Sprint() {
-  const [version, setVersion] = useState<VersionId>("v1");
+  const [version, setVersion] = useState<VersionId>("v2");
   const active = VERSIONS.find((v) => v.id === version)!;
   const disabled = !active.available;
 
