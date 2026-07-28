@@ -49,6 +49,15 @@ const items: Item[] = [
     thumbs: [],
     thumbTone: "obsidian",
   },
+  {
+    title: "Vision OS Template Pack",
+    format: "PDF Guide",
+    desc: "Notion & Obsidian templates mirroring Magnara's structure — for non-app users.",
+    href: "/vision-os-template-pack.pdf",
+    price: "Free",
+    thumbs: [],
+    thumbTone: "notion",
+  },
 ];
 
 function PdfPreview({ thumbs }: { thumbs: Item["thumbs"] }) {
