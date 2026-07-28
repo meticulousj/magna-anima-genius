@@ -86,7 +86,23 @@ export function Sprint() {
             })}
           </div>
 
-          <div className="mt-6 flex gap-4 items-center flex-wrap">
+          {/* Social proof */}
+          <blockquote className="mt-8 max-w-md border-l-2 border-gold/60 pl-5">
+            <p className="text-foreground/90 italic leading-relaxed">
+              “I finished the Sprint with a clear offer, a daily ritual I actually keep, and a folder of proof I can point to. It felt like the year finally started.”
+            </p>
+            <footer className="mt-3 flex items-center gap-3">
+              <div className="h-9 w-9 rounded-full bg-gold/20 flex items-center justify-center">
+                <span className="font-display text-gold text-sm">M.</span>
+              </div>
+              <div>
+                <p className="font-display text-sm text-foreground">Maya R.</p>
+                <p className="smallcaps text-[10px] text-muted-foreground">Sprint beta cohort · writer & strategist</p>
+              </div>
+            </footer>
+          </blockquote>
+
+          <div className="mt-8 flex gap-4 items-center flex-wrap">
             <a
               href={disabled ? undefined : fileFor(version, "pdf")}
               download={!disabled}
