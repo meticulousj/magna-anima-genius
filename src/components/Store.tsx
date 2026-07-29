@@ -184,12 +184,13 @@ export function Store() {
             Get notified when new drops ship →
           </a>
           <span className="text-muted-foreground/40">·</span>
-          <a
-            href="#sprint"
+          <Link
+            to="/sprint"
             className="smallcaps text-xs text-muted-foreground hover:text-gold"
           >
             See the Sprint in detail →
-          </a>
+          </Link>
+
         </div>
       </div>
     </section>
