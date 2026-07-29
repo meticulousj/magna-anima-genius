@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
+
 import sprintCover from "@/assets/sprint-v2-cover.jpg";
 import sprintP2 from "@/assets/sprint-v2-p2.jpg";
 import sprintP3 from "@/assets/sprint-v2-p3.jpg";
@@ -184,12 +186,13 @@ export function Store() {
             Get notified when new drops ship →
           </a>
           <span className="text-muted-foreground/40">·</span>
-          <a
-            href="#sprint"
+          <Link
+            to="/sprint"
             className="smallcaps text-xs text-muted-foreground hover:text-gold"
           >
             See the Sprint in detail →
-          </a>
+          </Link>
+
         </div>
       </div>
     </section>
