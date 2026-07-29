@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react";
+import { z } from "zod";
 import { Starfield } from "./Starfield";
+import { supabase } from "@/integrations/supabase/client";
+
+const emailSchema = z
+  .string()
+  .trim()
+  .email({ message: "Enter a valid email address" })
+  .max(255, { message: "Email must be less than 255 characters" });
 
 export function Subscribe() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const [intent, setIntent] = useState<"default" | "sprint">("default");
 
   useEffect(() => {
@@ -16,6 +26,32 @@ export function Subscribe() {
   }, []);
 
   const isSprint = intent === "sprint";
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+
+    const parsed = emailSchema.safeParse(email);
+    if (!parsed.success) {
+      setError(parsed.error.issues[0].message);
+      return;
+    }
+
+    setLoading(true);
+    const { error: insertError } = await supabase.from("subscribers").insert({
+      email: parsed.data.toLowerCase(),
+      source: isSprint ? "sprint" : "newsletter",
+    });
+    setLoading(false);
+
+    // Duplicate email = already on the list; treat as success.
+    if (insertError && insertError.code !== "23505") {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
+
+    setSent(true);
+  }
 
   return (
     <section id="subscribe" className="relative py-28 md:py-36 overflow-hidden border-y border-border/60">
@@ -41,25 +77,20 @@ export function Subscribe() {
         </h2>
         <p className="mt-6 text-muted-foreground max-w-lg mx-auto">
           {isSprint
-            ? "Drop your email — you'll get the 90-Day Sovereign Sprint workbook (PDF + Notion) the moment v1 ships, plus the weekly dispatch."
+            ? "The 90-Day Sovereign Sprint (v2) is live — download it free above. Drop your email and you'll get every new version and the weekly dispatch first."
             : "One dispatch a week. Essays, rituals, and tools for the sovereign life. No noise. No filler. Unsubscribe anytime."}
         </p>
 
         {sent ? (
           <div className="mt-12 font-display text-2xl text-gold italic animate-rise">
-            {isSprint ? "Your seat is held. The Sprint begins soon." : "The flame is lit. Welcome."}
+            {isSprint ? "You're on the list. The Sprint is yours." : "The flame is lit. Welcome."}
           </div>
         ) : (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (email.includes("@")) setSent(true);
-            }}
-            className="mt-12 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
-          >
+          <form onSubmit={handleSubmit} className="mt-12 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
             <input
               type="email"
               required
+              maxLength={255}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
@@ -67,12 +98,15 @@ export function Subscribe() {
             />
             <button
               type="submit"
-              className="bg-gradient-gold text-primary-foreground px-7 py-3.5 rounded-sm shadow-gold smallcaps text-sm"
+              disabled={loading}
+              className="bg-gradient-gold text-primary-foreground px-7 py-3.5 rounded-sm shadow-gold smallcaps text-sm disabled:opacity-60"
             >
-              {isSprint ? "Reserve Seat" : "Subscribe"}
+              {loading ? "Sending…" : isSprint ? "Reserve Seat" : "Subscribe"}
             </button>
           </form>
         )}
+
+        {error && <p className="mt-4 text-sm text-destructive">{error}</p>}
 
         <p className="mt-8 smallcaps text-[10px] text-muted-foreground">
           585+ readers · founded 2025
