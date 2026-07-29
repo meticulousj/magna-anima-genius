@@ -32,10 +32,19 @@ export function Hero() {
         </p>
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 animate-rise [animation-delay:360ms]">
           <a
-            href="#subscribe"
+            href="/sovereign-sprint-workbook-v2.pdf"
+            download
+            target="_blank"
+            rel="noopener"
             className="group relative inline-flex items-center justify-center px-8 py-3.5 bg-gradient-gold text-primary-foreground font-medium tracking-wide shadow-gold rounded-sm"
           >
-            <span className="smallcaps text-sm">Join the Project</span>
+            <span className="smallcaps text-sm">Start here · Free Sprint PDF</span>
+          </a>
+          <a
+            href="#subscribe"
+            className="smallcaps text-sm text-foreground/80 hover:text-gold transition-colors px-4 py-3 border border-gold/40 rounded-sm"
+          >
+            Join the Project
           </a>
           <a
             href="#manifesto"
@@ -44,6 +53,7 @@ export function Hero() {
             Read the Manifesto →
           </a>
         </div>
+
       </div>
 
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-background" />

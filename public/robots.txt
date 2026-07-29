@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://magna-anima-genius.lovable.app/sitemap.xml
