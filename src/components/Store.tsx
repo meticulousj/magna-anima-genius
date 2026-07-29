@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
+
 import sprintCover from "@/assets/sprint-v2-cover.jpg";
 import sprintP2 from "@/assets/sprint-v2-p2.jpg";
 import sprintP3 from "@/assets/sprint-v2-p3.jpg";
