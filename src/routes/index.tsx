@@ -20,17 +20,18 @@ const TITLE =
 const DESCRIPTION =
   "A global initiative nurturing the brilliance within every individual. Essays, rituals, the Magnara OS, and the 90-Day Sovereign Sprint workbook — built on four pillars: Intellect, Heart, Empowerment, Purpose.";
 
-// In-page sections, surfaced to search engines as SiteNavigationElement.
+// Primary navigation targets, surfaced to search engines.
 const SECTIONS = [
-  { name: "Pillars", anchor: "pillars" },
-  { name: "Values", anchor: "values" },
-  { name: "Dispatches", anchor: "essays" },
-  { name: "Magnara", anchor: "magnara" },
-  { name: "Sprint", anchor: "sprint" },
-  { name: "Store", anchor: "store" },
-  { name: "Manifesto", anchor: "manifesto" },
-  { name: "Subscribe", anchor: "subscribe" },
+  { name: "Pillars", url: `${SITE_URL}/#pillars` },
+  { name: "Values", url: `${SITE_URL}/#values` },
+  { name: "Dispatches", url: `${SITE_URL}/#essays` },
+  { name: "Magnara", url: `${SITE_URL}/#magnara` },
+  { name: "Sprint", url: `${SITE_URL}/sprint` },
+  { name: "Store", url: `${SITE_URL}/store` },
+  { name: "Manifesto", url: `${SITE_URL}/#manifesto` },
+  { name: "Subscribe", url: `${SITE_URL}/#subscribe` },
 ];
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -63,36 +64,14 @@ export const Route = createFileRoute("/")({
             "@type": "SiteNavigationElement",
             position: i + 1,
             name: s.name,
-            url: `${SITE_URL}/#${s.anchor}`,
+            url: s.url,
           })),
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          name: "The 90-Day Sovereign Sprint",
-          description:
-            "A 90-day workbook of daily prompts, three rituals, weekly reflections and 30·60·90 milestones. Shipped as PDF, Notion template, and Obsidian vault.",
-          inLanguage: "en",
-          isAccessibleForFree: true,
-          url: `${SITE_URL}/#sprint`,
-          author: {
-            "@type": "Organization",
-            name: "The Magna Anima Genius Project",
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "The Magna Anima Genius Project",
-          },
-          image: OG_IMAGE,
-          encodingFormat: ["application/pdf", "application/zip"],
         }),
       },
     ],
   }),
 });
+
 
 function Index() {
   return (
