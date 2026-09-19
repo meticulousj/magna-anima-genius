@@ -56,7 +56,7 @@ export function Magnara() {
             ))}
           </ul>
 
-          <div className="mt-12 flex gap-4 items-center">
+          <div className="mt-12 flex flex-wrap gap-4 items-center">
             <a
               href="https://magnara.base44.app"
               target="_blank"
@@ -64,6 +64,14 @@ export function Magnara() {
               className="inline-flex items-center px-7 py-3 bg-gradient-gold text-primary-foreground rounded-sm shadow-gold"
             >
               <span className="smallcaps text-sm">Start Free ↗</span>
+            </a>
+            <a
+              href="https://northstarpath.base44.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-7 py-3 border border-gold/40 text-gold rounded-sm hover:bg-gold hover:text-primary-foreground transition-colors"
+            >
+              <span className="smallcaps text-sm">Open North Star Path ↗</span>
             </a>
             <a href="#essays" className="smallcaps text-xs text-muted-foreground hover:text-gold">
               See how it works

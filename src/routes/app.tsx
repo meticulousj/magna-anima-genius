@@ -129,6 +129,14 @@ function AppPage() {
                 <span className="smallcaps text-sm">Start Free ↗</span>
               </a>
               <a
+                href="https://northstarpath.base44.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-8 py-4 border border-gold/40 text-gold rounded-sm hover:bg-gold hover:text-primary-foreground transition-colors"
+              >
+                <span className="smallcaps text-sm">Open North Star Path ↗</span>
+              </a>
+              <a
                 href="#features"
                 className="smallcaps text-xs text-muted-foreground hover:text-gold transition-colors"
               >
