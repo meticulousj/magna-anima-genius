@@ -6,6 +6,7 @@ const links = [
   { href: "/#values", label: "Values" },
   { href: "/#essays", label: "Dispatches" },
   { href: "/#magnara", label: "Magnara" },
+  { to: "/app", label: "App" },
   { to: "/sprint", label: "Sprint" },
   { to: "/store", label: "Store" },
   { href: "/#manifesto", label: "Manifesto" },
