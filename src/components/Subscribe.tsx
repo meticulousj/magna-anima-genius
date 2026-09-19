@@ -111,6 +111,14 @@ export function Subscribe() {
         <p className="mt-8 smallcaps text-[10px] text-muted-foreground">
           585+ readers · founded 2025
         </p>
+        <a
+          href="https://magnaanimageniusproject.substack.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block smallcaps text-xs text-muted-foreground hover:text-gold transition-colors"
+        >
+          Read the dispatches on Substack ↗
+        </a>
       </div>
     </section>
   );

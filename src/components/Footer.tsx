@@ -17,6 +17,14 @@ export function Footer() {
           <a href="#pillars" className="hover:text-gold">Pillars</a>
           <a href="#magnara" className="hover:text-gold">Magnara</a>
           <a
+            href="https://magnaanimageniusproject.substack.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gold"
+          >
+            Substack ↗
+          </a>
+          <a
             href="https://bio.site/TheMagnaAnimaGeniusProject"
             target="_blank"
             rel="noopener noreferrer"
