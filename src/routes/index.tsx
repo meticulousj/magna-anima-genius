@@ -26,6 +26,7 @@ const SECTIONS = [
   { name: "Values", url: `${SITE_URL}/#values` },
   { name: "Dispatches", url: `${SITE_URL}/#essays` },
   { name: "Magnara", url: `${SITE_URL}/#magnara` },
+  { name: "App", url: `${SITE_URL}/app` },
   { name: "Sprint", url: `${SITE_URL}/sprint` },
   { name: "Store", url: `${SITE_URL}/store` },
   { name: "Manifesto", url: `${SITE_URL}/#manifesto` },
