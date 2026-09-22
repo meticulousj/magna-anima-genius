@@ -8,6 +8,8 @@
   --font-display: "Cormorant Garamond", "Cormorant", ui-serif, Georgia, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-editorial: "Instrument Serif", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-interface: "Work Sans", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -93,6 +95,14 @@
   --gradient-night: radial-gradient(ellipse at top, oklch(0.22 0.05 265) 0%, oklch(0.13 0.035 260) 70%);
   --shadow-gold: 0 20px 60px -20px oklch(0.78 0.13 82 / 0.35);
   --shadow-inset-gold: inset 0 1px 0 0 oklch(0.9 0.1 85 / 0.15);
+
+  /* Noir Sovereign product surface */
+  --app-noir: oklch(0.115 0.018 255);
+  --app-panel: oklch(0.155 0.02 255);
+  --app-panel-strong: oklch(0.195 0.021 255);
+  --app-line: oklch(0.82 0.14 82 / 0.2);
+  --app-gold-muted: oklch(0.69 0.1 78);
+  --app-shadow: 0 28px 80px -46px oklch(0.82 0.14 82 / 0.45);
 }
 
 .dark {
@@ -153,6 +163,8 @@
 @layer utilities {
   .font-display { font-family: var(--font-display); }
   .font-body { font-family: var(--font-body); }
+  .font-editorial { font-family: var(--font-editorial); }
+  .font-interface { font-family: var(--font-interface); }
 
   .text-gold { color: var(--gold); }
   .bg-gold { background-color: var(--gold); }
@@ -216,4 +228,12 @@
     to { opacity: 1; transform: translateY(0); }
   }
   .animate-rise { animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-float-slow,
+  .animate-shimmer {
+    animation: none;
+  }
 }
