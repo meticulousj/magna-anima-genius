@@ -214,7 +214,6 @@ function AppPage() {
                 </Button>
               </div>
             </div>
-          </h2>
           </div>
         </div>
       </section>
