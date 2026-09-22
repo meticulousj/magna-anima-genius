@@ -6,10 +6,10 @@ export function Starfield({ count = 40, className = "" }: { count?: number; clas
     const s = (Math.sin(i * 3.17) * 1000) % 1;
     const d = (Math.sin(i * 7.31) * 500) % 1;
     return {
-      left: `${Math.abs(x) * 100}%`,
-      top: `${Math.abs(y) * 100}%`,
-      size: 1 + Math.abs(s) * 2.2,
-      delay: `${Math.abs(d) * 6}s`,
+      left: `${(Math.abs(x) * 100).toFixed(4)}%`,
+      top: `${(Math.abs(y) * 100).toFixed(4)}%`,
+      size: (1 + Math.abs(s) * 2.2).toFixed(4),
+      delay: `${(Math.abs(d) * 6).toFixed(4)}s`,
     };
   });
   return (
@@ -21,10 +21,10 @@ export function Starfield({ count = 40, className = "" }: { count?: number; clas
           style={{
             left: st.left,
             top: st.top,
-            width: st.size,
-            height: st.size,
+            width: `${st.size}px`,
+            height: `${st.size}px`,
             animationDelay: st.delay,
-            boxShadow: `0 0 ${st.size * 3}px oklch(0.85 0.14 82 / 0.6)`,
+            boxShadow: `0 0 ${(Number(st.size) * 3).toFixed(4)}px oklch(0.85 0.14 82 / 0.6)`,
           }}
         />
       ))}

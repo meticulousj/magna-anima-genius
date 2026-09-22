@@ -110,7 +110,7 @@ function AppPage() {
       <SiteNav />
 
       <section className="relative overflow-hidden border-b border-[var(--app-line)] px-4 py-5 sm:px-6 lg:px-8 lg:py-8">
-        <div className="mx-auto grid min-h-[calc(100svh-7rem)] max-w-7xl grid-cols-1 gap-3 lg:grid-cols-12 lg:grid-rows-[minmax(350px,1fr)_170px]">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-3 lg:grid-cols-12 lg:grid-rows-[560px_170px]">
           <div className="relative overflow-hidden border border-[var(--app-line)] bg-[var(--app-panel)] px-6 py-10 sm:px-10 lg:col-span-7 lg:row-span-1 lg:px-14 lg:py-14">
             <div className="absolute right-0 top-0 h-28 w-28 border-b border-l border-[var(--app-line)]" aria-hidden />
             <p className="smallcaps text-[11px] text-gold">The sovereign operating system</p>
