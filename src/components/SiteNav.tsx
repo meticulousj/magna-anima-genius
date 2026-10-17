@@ -47,6 +47,14 @@ export function SiteNav() {
 
         <div className="flex items-center gap-3">
           <a
+            href="https://magnaanimageniusbiosite.lovable.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:inline-block smallcaps text-xs px-4 py-2 text-muted-foreground hover:text-gold transition-colors"
+          >
+            Bio Site ↗
+          </a>
+          <a
             href="https://bio.site/TheMagnaAnimaGeniusProject"
             target="_blank"
             rel="noopener noreferrer"

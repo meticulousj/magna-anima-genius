@@ -32,6 +32,14 @@ export function Footer() {
           >
             All Links ↗
           </a>
+          <a
+            href="https://magnaanimageniusbiosite.lovable.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gold"
+          >
+            Bio Site ↗
+          </a>
           <a href="#subscribe" className="hover:text-gold">Subscribe</a>
         </div>
       </div>
